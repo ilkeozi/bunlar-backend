@@ -8,7 +8,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('Bunlar example')
+    .setTitle('Bunlar REST API')
     .setDescription('The bunlar API description')
     .setVersion('1.0')
     .build();
