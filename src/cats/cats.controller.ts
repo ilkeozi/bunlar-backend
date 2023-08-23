@@ -5,9 +5,11 @@ import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { Cat } from './interfaces/cat.interface';
+import { ApiTags } from '@nestjs/swagger';
 
 @UseGuards(RolesGuard)
 @Controller('cats')
+@ApiTags('Cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
