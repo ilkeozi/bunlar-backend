@@ -11,10 +11,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - uses: aws-actions/configure-aws-credentials@v2
+      - uses: aws-actions/configure-aws-credentials@v3
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
-      - run: zip -j  bunlar-backend.zip ./ bunlar-backend/index.js
-      - run: aws lambda update-function-code --function-name= bunlar-backend --zip-file=fileb:// bunlar-backend.zip
+      - run: zip -j  bunlar-backend.zip ./bunlar-backend/index.js
+      - run: aws lambda update-function-code --function-name= bunlar-backend --zip-file=fileb://bunlar-backend.zip
