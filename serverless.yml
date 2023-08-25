@@ -1,12 +1,19 @@
-service: bunlar-backend-prod
+service: bunlar-backend
 
 plugins:
   - serverless-offline
+  - serverless-plugin-warmup
+  - serverless-plugin-optimize
+
+custom:
+  warmup:
 
 provider:
   name: aws
   runtime: nodejs16.x
   region: eu-central-1
+  timeout: 20
+  memorySize: 128
 
 functions:
   main:

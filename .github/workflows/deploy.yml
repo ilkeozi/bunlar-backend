@@ -16,5 +16,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
-      - run: zip -j  bunlar-backend.zip ./bunlar-backend/index.js
-      - run: aws lambda update-function-code --function-name= bunlar-backend --zip-file=fileb://bunlar-backend.zip
+      # Build using SAM
+      - run: sam build --use-container --template-file serverless.yaml
+      # Deploy on AWS
+      - run: sam deploy --config-file sam-app/samconfig.toml --no-fail-on-empty-changeset --parameter-overrides ParameterKey=MyParam,ParameterValue=${{ secrets.MyParam }}
