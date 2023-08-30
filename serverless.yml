@@ -1,0 +1,36 @@
+service: bunlar-backend
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-optimize
+  - serverless-plugin-warmup
+
+custom:
+  warmup:
+    enabled: true
+    concurrency: 2
+    prewarm: true
+    schedule: rate(5 minutes)
+    source: { 'type': 'keepLambdaWarm' }
+    sourceRaw: true
+    timeout: 60
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: eu-central-1
+  timeout: 20
+  memorySize: 256
+
+functions:
+  main:
+    warmup:
+      enabled: true
+    handler: dist/main.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
