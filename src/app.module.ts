@@ -1,5 +1,4 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { CatsModule } from './cats/cats.module';
 import { CoreModule } from './core/core.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { CountriesModule } from './countries/countries.module';
@@ -12,7 +11,6 @@ const dbUri =
 @Module({
   imports: [
     CoreModule,
-    CatsModule,
     CountriesModule,
     LanguagesModule,
     MongooseModule.forRoot(dbUri),
