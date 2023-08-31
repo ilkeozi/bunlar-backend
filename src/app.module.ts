@@ -5,6 +5,7 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { CountriesModule } from './countries/countries.module';
 import { LanguagesModule } from './languages/languages.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
 import helmet from 'helmet';
 
 const dbUri =
@@ -16,6 +17,7 @@ const dbUri =
     CountriesModule,
     LanguagesModule,
     MongooseModule.forRoot(dbUri),
+    AuthModule,
   ],
 })
 export class AppModule implements NestModule {
