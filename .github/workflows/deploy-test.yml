@@ -17,7 +17,8 @@ jobs:
       - run: serverless plugin install -n serverless-plugin-warmup
       - run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       # Configure Environment Development
-      - run: echo "${{ secrets.DEVELOPMENT_ENVIRONMENT }}" > .development.env
+      - run: |
+          echo "${{ secrets.DEVELOPMENT_ENVIRONMENT }}" > .env.dev
       - run: npm ci
       - run: npm run build
       # Deploy on AWS

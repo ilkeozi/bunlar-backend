@@ -4,7 +4,7 @@ plugins:
   - serverless-offline
   - serverless-plugin-optimize
   - serverless-plugin-warmup
-
+useDotenv: true
 custom:
   serverless-offline:
     noPrependStageInUrl: true
@@ -19,10 +19,13 @@ custom:
 
 provider:
   name: aws
+  stage: ${opt:stage, 'dev'}
   runtime: nodejs16.x
   region: eu-central-1
   timeout: 20
   memorySize: 256
+  environment:
+    SYSTEM_ID: jdoe
 
 functions:
   main:
