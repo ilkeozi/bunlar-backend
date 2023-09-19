@@ -9,13 +9,21 @@ describe('Countries Controller', () => {
   let service: CountriesService;
   const createCountryDto: CreateCountryDto = {
     name: 'Country #1',
-    breed: 'Breed #1',
     age: 4,
+    breed: 'Breed #1',
+    alpha2Code: 'Code #1',
+    alpha3Code: 'Code #2',
+    numericCode: 1,
+    nameTurkish: 'Country #1',
   };
 
   const mockCountry = {
     name: 'Country #1',
     breed: 'Breed #1',
+    alpha2Code: 'Code #1',
+    alpha3Code: 'Code #2',
+    numericCode: 1,
+    nameTurkish: 'Country #1',
     age: 4,
     _id: 'a id',
   };
@@ -31,16 +39,28 @@ describe('Countries Controller', () => {
               {
                 name: 'Country #1',
                 breed: 'Bread #1',
+                alpha2Code: 'Code #1',
+                alpha3Code: 'Code #2',
+                numericCode: 1,
+                nameTurkish: 'Country #1',
                 age: 4,
               },
               {
                 name: 'Country #2',
                 breed: 'Breed #2',
+                alpha2Code: 'Code #3',
+                alpha3Code: 'Code #4',
+                numericCode: 2,
+                nameTurkish: 'Country #2',
                 age: 3,
               },
               {
                 name: 'Country #3',
                 breed: 'Breed #3',
+                alpha2Code: 'Code #5',
+                alpha3Code: 'Code #6',
+                numericCode: 3,
+                nameTurkish: 'Country #3',
                 age: 2,
               },
             ]),
@@ -72,16 +92,28 @@ describe('Countries Controller', () => {
         {
           name: 'Country #1',
           breed: 'Bread #1',
+          alpha2Code: 'Code #1',
+          alpha3Code: 'Code #2',
+          numericCode: 1,
+          nameTurkish: 'Country #1',
           age: 4,
         },
         {
           name: 'Country #2',
           breed: 'Breed #2',
+          alpha2Code: 'Code #3',
+          alpha3Code: 'Code #4',
+          numericCode: 2,
+          nameTurkish: 'Country #2',
           age: 3,
         },
         {
           name: 'Country #3',
           breed: 'Breed #3',
+          alpha2Code: 'Code #5',
+          alpha3Code: 'Code #6',
+          numericCode: 3,
+          nameTurkish: 'Country #3',
           age: 2,
         },
       ]);
