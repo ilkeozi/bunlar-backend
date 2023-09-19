@@ -12,7 +12,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     EventEmitterModule.forRoot(),
     ConfigModule.forRoot({
-      envFilePath: ['.local.env', '.development.env.', '.production.env.'],
+      envFilePath: ['.local.env', '.env.development', '.env.production'],
     }),
     CoreModule,
     CountriesModule,

@@ -18,7 +18,7 @@ jobs:
       - run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       # Configure Environment Development
       - run: |
-          echo "${{ secrets.DEVELOPMENT_ENVIRONMENT }}" > .env.dev
+          echo "${{ secrets.DEVELOPMENT_ENVIRONMENT }}" > .env.development
       - run: npm ci
       - run: npm run build
       # Deploy on AWS
