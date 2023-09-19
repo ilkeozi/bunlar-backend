@@ -6,6 +6,8 @@ plugins:
   - serverless-plugin-warmup
 
 custom:
+  serverless-offline:
+    noPrependStageInUrl: true
   warmup:
     enabled: true
     concurrency: 2

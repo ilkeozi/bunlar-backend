@@ -6,6 +6,8 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CountryCreatedEvent } from './events/country-created.event';
 import { EventEmitter2 } from '@nestjs/event-emitter';
+import { CountryUpdatedEvent } from './events/country-updated.event';
+import { CountryDeletedEvent } from './events/country-deleted.event';
 
 @Injectable()
 export class CountriesService {
@@ -28,27 +30,25 @@ export class CountriesService {
     return this.countryModel.find().exec();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return this.countryModel.findOne({ _id: id }).exec();
   }
 
-  async update(id: number, updateCountryDto: UpdateCountryDto) {
+  async update(id: string, updateCountryDto: UpdateCountryDto) {
     const updatedItem = await this.countryModel.findByIdAndUpdate(
-      { _id: id },
+      id,
       updateCountryDto,
     );
 
-    const countryUpdatedEvent = new CountryCreatedEvent();
+    const countryUpdatedEvent = new CountryUpdatedEvent();
     countryUpdatedEvent.name = updatedItem.name;
     this.eventEmitter.emit('country.updated', countryUpdatedEvent);
     return updatedItem;
   }
 
-  async remove(id: number) {
-    const deletedCountry = await this.countryModel
-      .findByIdAndRemove({ _id: id })
-      .exec();
-    const countryDeletedEvent = new CountryCreatedEvent();
+  async remove(id: string) {
+    const deletedCountry = await this.countryModel.findByIdAndRemove(id).exec();
+    const countryDeletedEvent = new CountryDeletedEvent();
     countryDeletedEvent.name = deletedCountry.name;
     this.eventEmitter.emit('country.deleted', countryDeletedEvent);
 

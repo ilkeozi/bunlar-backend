@@ -16,7 +16,7 @@ export class CreateCountryDto {
   @IsString()
   readonly alpha3Code: string;
 
-  @IsString()
+  @IsInt()
   readonly numericCode: number;
 
   @IsString()
