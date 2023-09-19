@@ -3,6 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { Model } from 'mongoose';
 import { CountriesService } from './countries.service';
 import { Country } from './schemas/countries.schema';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 const mockCountry = {
   name: 'country #1',
@@ -41,6 +42,7 @@ describe('Countries Service', () => {
             exec: jest.fn(),
           },
         },
+        EventEmitter2,
       ],
     }).compile();
 
