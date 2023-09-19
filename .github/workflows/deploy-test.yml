@@ -15,6 +15,7 @@ jobs:
       - run: npm install -g serverless
       - run: serverless plugin install -n serverless-plugin-optimize
       - run: serverless plugin install -n serverless-plugin-warmup
+      - run: serverless plugin install -n serverless-dotenv-plugin
       - run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       # Configure Environment Development
       - run: |
