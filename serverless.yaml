@@ -4,7 +4,6 @@ plugins:
   - serverless-offline
   - serverless-plugin-optimize
   - serverless-plugin-warmup
-  - serverless-dotenv-plugin
 useDotenv: true
 custom:
   serverless-offline:
