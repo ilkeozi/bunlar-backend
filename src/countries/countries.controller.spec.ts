@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CountriesController } from './countries.controller';
 import { CreateCountryDto } from './dto/create-country.dto';
 import { CountriesService } from './countries.service';
+import { CacheModule } from '@nestjs/cache-manager';
 
 describe('Countries Controller', () => {
   let controller: CountriesController;
@@ -47,6 +48,7 @@ describe('Countries Controller', () => {
           },
         },
       ],
+      imports: [CacheModule.register()],
     }).compile();
 
     controller = module.get<CountriesController>(CountriesController);

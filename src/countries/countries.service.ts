@@ -4,14 +4,23 @@ import { UpdateCountryDto } from './dto/update-country.dto';
 import { Country } from './schemas/countries.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { CountryCreatedEvent } from './events/country-created.event';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Injectable()
 export class CountriesService {
   constructor(
     @InjectModel(Country.name) private readonly countryModel: Model<Country>,
+    private eventEmitter: EventEmitter2,
   ) {}
+
   async create(createCountryDto: CreateCountryDto): Promise<Country> {
     const createdItem = await this.countryModel.create(createCountryDto);
+
+    const countryCreatedEvent = new CountryCreatedEvent();
+    countryCreatedEvent.name = createdItem.name;
+    this.eventEmitter.emit('country.created', countryCreatedEvent);
+
     return createdItem;
   }
 
