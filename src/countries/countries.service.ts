@@ -33,13 +33,25 @@ export class CountriesService {
   }
 
   async update(id: number, updateCountryDto: UpdateCountryDto) {
-    return `This action updates a #${id} country`;
+    const updatedItem = await this.countryModel.findByIdAndUpdate(
+      { _id: id },
+      updateCountryDto,
+    );
+
+    const countryUpdatedEvent = new CountryCreatedEvent();
+    countryUpdatedEvent.name = updatedItem.name;
+    this.eventEmitter.emit('country.updated', countryUpdatedEvent);
+    return updatedItem;
   }
 
   async remove(id: number) {
     const deletedCountry = await this.countryModel
       .findByIdAndRemove({ _id: id })
       .exec();
+    const countryDeletedEvent = new CountryCreatedEvent();
+    countryDeletedEvent.name = deletedCountry.name;
+    this.eventEmitter.emit('country.deleted', countryDeletedEvent);
+
     return deletedCountry;
   }
 }
