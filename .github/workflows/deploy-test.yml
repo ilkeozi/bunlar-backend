@@ -20,8 +20,8 @@ jobs:
       # Configure Environment Development
       - run: |
           echo "${{ secrets.DEVELOPMENT_ENVIRONMENT }}" > .env.development
-      - run: cp .env.development ./dist/.env.development
       - run: npm ci
       - run: npm run build
+      - run: cp .env.development ./dist/.env.development
       # Deploy on AWS
       - run: serverless deploy
