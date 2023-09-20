@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import helmet from 'helmet';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ConfigModule } from '@nestjs/config';
     CountriesModule,
     LanguagesModule,
     MongooseModule.forRoot(process.env.MONGO_URI),
+    AuthModule,
   ],
 })
 export class AppModule implements NestModule {
