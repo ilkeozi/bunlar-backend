@@ -15,6 +15,17 @@ async function bootstrap(): Promise<Handler> {
     .setTitle('Bunlar REST API')
     .setDescription('The bunlar API description')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'JWT token',
+        in: 'header',
+      },
+      'jwt',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
 

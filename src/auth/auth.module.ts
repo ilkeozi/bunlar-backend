@@ -5,6 +5,7 @@ import { UserRegisteredListener } from './listeners/user-registered.listener';
 import { UserLoginListener } from './listeners/user-login.listener';
 import { RegistrationConfirmedListener } from './listeners/registration-confirmed.listener';
 import { PassportModule } from '@nestjs/passport';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [PassportModule.register({ defaultStrategy: 'jwt' })],
@@ -13,6 +14,7 @@ import { PassportModule } from '@nestjs/passport';
     UserRegisteredListener,
     UserLoginListener,
     RegistrationConfirmedListener,
+    JwtStrategy,
   ],
   controllers: [AuthController],
 })

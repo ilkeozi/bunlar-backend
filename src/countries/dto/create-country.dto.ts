@@ -4,12 +4,6 @@ export class CreateCountryDto {
   @IsString()
   readonly name: string;
 
-  @IsInt()
-  readonly age: number;
-
-  @IsString()
-  readonly breed: string;
-
   @IsString()
   readonly alpha2Code: string;
 
