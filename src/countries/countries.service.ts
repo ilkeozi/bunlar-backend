@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateCountryDto } from './dto/create-country.dto';
 import { UpdateCountryDto } from './dto/update-country.dto';
 import { Country } from './schemas/countries.schema';
@@ -26,15 +26,28 @@ export class CountriesService {
     return createdItem;
   }
 
-  async findAll() {
-    return this.countryModel.find().exec();
+  async findAll(): Promise<Country[]> {
+    const items = await this.countryModel.find().exec();
+
+    if (!items) {
+      throw new NotFoundException(`Countries not found`);
+    }
+    return items;
   }
 
-  async findOne(id: string) {
-    return this.countryModel.findOne({ _id: id }).exec();
+  async findOne(id: string): Promise<Country> {
+    const item = await this.countryModel.findOne({ _id: id }).exec();
+
+    if (!item) {
+      throw new NotFoundException(`Country ${id} not found`);
+    }
+    return item;
   }
 
-  async update(id: string, updateCountryDto: UpdateCountryDto) {
+  async update(
+    id: string,
+    updateCountryDto: UpdateCountryDto,
+  ): Promise<Country> {
     const updatedItem = await this.countryModel.findByIdAndUpdate(
       id,
       updateCountryDto,
@@ -46,7 +59,7 @@ export class CountriesService {
     return updatedItem;
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<Country> {
     const deletedCountry = await this.countryModel.findByIdAndRemove(id).exec();
     const countryDeletedEvent = new CountryDeletedEvent();
     countryDeletedEvent.name = deletedCountry.name;

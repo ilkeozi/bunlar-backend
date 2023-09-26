@@ -13,11 +13,11 @@ import { CreateCountryDto } from './dto/create-country.dto';
 import { UpdateCountryDto } from './dto/update-country.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { CacheInterceptor } from '@nestjs/cache-manager';
-import { DocumentCreate } from 'src/common/decorators/document-create.decorator';
-import { DocumentUpdate } from 'src/common/decorators/document-update.decorator';
-import { DocumentFindOne } from 'src/common/decorators/document-findone.decorator';
-import { DocumentFindAll } from 'src/common/decorators/document-findall.decorator';
-import { DocumentDelete } from 'src/common/decorators/document-delete.decorator';
+import { DocumentCreate } from '../common/decorators/document-create.decorator';
+import { DocumentUpdate } from '../common/decorators/document-update.decorator';
+import { DocumentFindOne } from '../common/decorators/document-findone.decorator';
+import { DocumentFindAll } from '../common/decorators/document-findall.decorator';
+import { DocumentDelete } from '../common/decorators/document-delete.decorator';
 
 @Controller('countries')
 @ApiTags('Countries')

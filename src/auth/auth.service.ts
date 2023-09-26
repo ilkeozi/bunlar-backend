@@ -11,6 +11,7 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { ConfirmRegistrationDto } from './dto/confirm-registraton.dto';
 import { UserLoginEvent } from './events/user-login.event';
 import { EventEmitter2 } from '@nestjs/event-emitter';
+import { LoginResponse } from './schemas/login-response.schema';
 
 @Injectable()
 export class AuthService {
@@ -50,7 +51,7 @@ export class AuthService {
     return result;
   }
 
-  async login(loginUserDto: LoginUserDto) {
+  async login(loginUserDto: LoginUserDto): Promise<LoginResponse> {
     const { email, password } = loginUserDto;
 
     const userData: ICognitoUserData = {
@@ -65,13 +66,13 @@ export class AuthService {
 
     const cognitoUser = new CognitoUser(userData);
 
-    const result = new Promise((resolve, reject) => {
+    const result = new Promise<LoginResponse>((resolve, reject) => {
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: (result) => {
-          resolve({
-            accessToken: result.getAccessToken().getJwtToken(),
-            refreshToken: result.getRefreshToken().getToken(),
-          });
+          const loginResponse = new LoginResponse();
+          loginResponse.accessToken = result.getAccessToken().getJwtToken();
+          loginResponse.refreshToken = result.getRefreshToken().getToken();
+          resolve(loginResponse);
           const userLoginEvent = new UserLoginEvent();
           userLoginEvent.email = email;
           this.eventEmitter.emit('auth.user-login', userLoginEvent);

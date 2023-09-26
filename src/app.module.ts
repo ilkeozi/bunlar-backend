@@ -16,14 +16,14 @@ import { AuthModule } from './auth/auth.module';
       envFilePath: ['.local.env', '.env.development', '.env.production'],
     }),
     CoreModule,
+    AuthModule,
     CountriesModule,
     LanguagesModule,
     MongooseModule.forRoot(process.env.MONGO_URI),
-    AuthModule,
   ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(helmet(), LoggerMiddleware).forRoutes('cats');
+    consumer.apply(helmet(), LoggerMiddleware).forRoutes('none');
   }
 }

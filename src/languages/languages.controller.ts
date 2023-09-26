@@ -11,11 +11,11 @@ import { LanguagesService } from './languages.service';
 import { CreateLanguageDto } from './dto/create-language.dto';
 import { UpdateLanguageDto } from './dto/update-language.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { DocumentCreate } from 'src/common/decorators/document-create.decorator';
-import { DocumentFindAll } from 'src/common/decorators/document-findall.decorator';
-import { DocumentFindOne } from 'src/common/decorators/document-findone.decorator';
-import { DocumentUpdate } from 'src/common/decorators/document-update.decorator';
-import { DocumentDelete } from 'src/common/decorators/document-delete.decorator';
+import { DocumentCreate } from '../common/decorators/document-create.decorator';
+import { DocumentFindAll } from '../common/decorators/document-findall.decorator';
+import { DocumentFindOne } from '../common/decorators/document-findone.decorator';
+import { DocumentUpdate } from '../common/decorators/document-update.decorator';
+import { DocumentDelete } from '../common/decorators/document-delete.decorator';
 
 @Controller('languages')
 @ApiTags('Languages')
