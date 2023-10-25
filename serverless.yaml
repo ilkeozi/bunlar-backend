@@ -4,8 +4,10 @@ plugins:
   - serverless-offline
   - serverless-plugin-optimize
   - serverless-plugin-warmup
-
+useDotenv: true
 custom:
+  serverless-offline:
+    noPrependStageInUrl: true
   warmup:
     enabled: true
     concurrency: 2
@@ -17,6 +19,7 @@ custom:
 
 provider:
   name: aws
+  stage: ${opt:stage, 'dev'}
   runtime: nodejs16.x
   region: eu-central-1
   timeout: 20

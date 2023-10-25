@@ -4,7 +4,7 @@ import { CountryCreatedEvent } from '../events/country-created.event';
 
 @Injectable()
 export class CountryCreatedListener {
-  @OnEvent('order.created')
+  @OnEvent('country.created')
   handleCountryCreatedEvent(event: CountryCreatedEvent) {
     // handle and process "CountryCreatedEvent" event
     console.log(event);

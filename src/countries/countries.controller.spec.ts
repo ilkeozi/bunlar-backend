@@ -9,14 +9,18 @@ describe('Countries Controller', () => {
   let service: CountriesService;
   const createCountryDto: CreateCountryDto = {
     name: 'Country #1',
-    breed: 'Breed #1',
-    age: 4,
+    alpha2Code: 'Code #1',
+    alpha3Code: 'Code #2',
+    numericCode: 1,
+    nameTurkish: 'Country #1',
   };
 
   const mockCountry = {
     name: 'Country #1',
-    breed: 'Breed #1',
-    age: 4,
+    alpha2Code: 'Code #1',
+    alpha3Code: 'Code #2',
+    numericCode: 1,
+    nameTurkish: 'Country #1',
     _id: 'a id',
   };
 
@@ -30,18 +34,24 @@ describe('Countries Controller', () => {
             findAll: jest.fn().mockResolvedValue([
               {
                 name: 'Country #1',
-                breed: 'Bread #1',
-                age: 4,
+                alpha2Code: 'Code #1',
+                alpha3Code: 'Code #2',
+                numericCode: 1,
+                nameTurkish: 'Country #1',
               },
               {
                 name: 'Country #2',
-                breed: 'Breed #2',
-                age: 3,
+                alpha2Code: 'Code #3',
+                alpha3Code: 'Code #4',
+                numericCode: 2,
+                nameTurkish: 'Country #2',
               },
               {
                 name: 'Country #3',
-                breed: 'Breed #3',
-                age: 2,
+                alpha2Code: 'Code #5',
+                alpha3Code: 'Code #6',
+                numericCode: 3,
+                nameTurkish: 'Country #3',
               },
             ]),
             create: jest.fn().mockResolvedValue(createCountryDto),
@@ -71,18 +81,24 @@ describe('Countries Controller', () => {
       expect(controller.findAll()).resolves.toEqual([
         {
           name: 'Country #1',
-          breed: 'Bread #1',
-          age: 4,
+          alpha2Code: 'Code #1',
+          alpha3Code: 'Code #2',
+          numericCode: 1,
+          nameTurkish: 'Country #1',
         },
         {
           name: 'Country #2',
-          breed: 'Breed #2',
-          age: 3,
+          alpha2Code: 'Code #3',
+          alpha3Code: 'Code #4',
+          numericCode: 2,
+          nameTurkish: 'Country #2',
         },
         {
           name: 'Country #3',
-          breed: 'Breed #3',
-          age: 2,
+          alpha2Code: 'Code #5',
+          alpha3Code: 'Code #6',
+          numericCode: 3,
+          nameTurkish: 'Country #3',
         },
       ]);
       expect(service.findAll).toHaveBeenCalled();

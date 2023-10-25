@@ -1,5 +1,18 @@
+import { IsInt, IsString } from 'class-validator';
+
 export class CreateCountryDto {
+  @IsString()
   readonly name: string;
-  readonly age: number;
-  readonly breed: string;
+
+  @IsString()
+  readonly alpha2Code: string;
+
+  @IsString()
+  readonly alpha3Code: string;
+
+  @IsInt()
+  readonly numericCode: number;
+
+  @IsString()
+  readonly nameTurkish: string;
 }

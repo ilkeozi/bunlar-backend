@@ -7,8 +7,10 @@ import { EventEmitter2 } from '@nestjs/event-emitter';
 
 const mockCountry = {
   name: 'country #1',
-  breed: 'Breed #1',
-  age: 4,
+  alpha2Code: 'Code #1',
+  alpha3Code: 'Code #2',
+  numericCode: 1,
+  nameTurkish: 'Country #1',
 };
 
 describe('Countries Service', () => {
@@ -17,14 +19,18 @@ describe('Countries Service', () => {
 
   const countriesArray = [
     {
-      name: 'country #1',
-      breed: 'Breed #1',
-      age: 4,
+      name: 'Country #1',
+      alpha2Code: 'Code #1',
+      alpha3Code: 'Code #2',
+      numericCode: 1,
+      nameTurkish: 'Country #1',
     },
     {
-      name: 'country #2',
-      breed: 'Breed #2',
-      age: 2,
+      name: 'Country #2',
+      alpha2Code: 'Code #3',
+      alpha3Code: 'Code #4',
+      numericCode: 2,
+      nameTurkish: 'Country #2',
     },
   ];
 
@@ -66,14 +72,18 @@ describe('Countries Service', () => {
     jest.spyOn(model, 'create').mockImplementationOnce(() =>
       Promise.resolve({
         name: 'country #1',
-        breed: 'Breed #1',
-        age: 4,
+        alpha2Code: 'Code #1',
+        alpha3Code: 'Code #2',
+        numericCode: 1,
+        nameTurkish: 'Country #1',
       } as any),
     );
     const newcountry = await service.create({
       name: 'country #1',
-      breed: 'Breed #1',
-      age: 4,
+      alpha2Code: 'Code #1',
+      alpha3Code: 'Code #2',
+      numericCode: 1,
+      nameTurkish: 'Country #1',
     });
     expect(newcountry).toEqual(mockCountry);
   });

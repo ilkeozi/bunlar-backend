@@ -1,18 +1,42 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
-
-export type CountryDocument = HydratedDocument<Country>;
+import { ApiProperty } from '@nestjs/swagger';
 
 @Schema()
 export class Country {
   @Prop()
+  @ApiProperty({
+    example: 'Italy',
+    description: 'Name of the country in english.',
+  })
   name: string;
 
   @Prop()
-  age: number;
+  @ApiProperty({
+    example: 'IT',
+    description: ' ISO 3166 Alpha2Code of the country.',
+  })
+  alpha2Code: string;
 
   @Prop()
-  breed: string;
+  @ApiProperty({
+    example: 'ITA',
+    description: 'ISO 3166 Alpha3Code of the country.',
+  })
+  alpha3Code: string;
+
+  @Prop()
+  @ApiProperty({
+    example: 380,
+    description: 'ISO 3166 NumericCode of the country.',
+  })
+  numericCode: number;
+
+  @Prop()
+  @ApiProperty({
+    example: 'İtalya',
+    description: 'Name of the country in turkish.',
+  })
+  nameTurkish: string;
 }
 
 export const CountrySchema = SchemaFactory.createForClass(Country);

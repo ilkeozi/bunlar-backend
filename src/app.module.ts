@@ -6,20 +6,24 @@ import { LanguagesModule } from './languages/languages.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import helmet from 'helmet';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
-const dbUri =
-  'mongodb+srv://bunlar-mongo-db-user:0gxIg0mSFbrkyFPg@bunlar-mongo-db-prod.ornxx01.mongodb.net/?retryWrites=true&w=majority';
 @Module({
   imports: [
     EventEmitterModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: ['.local.env', '.env.development', '.env.production'],
+    }),
     CoreModule,
+    AuthModule,
     CountriesModule,
     LanguagesModule,
-    MongooseModule.forRoot(dbUri),
+    MongooseModule.forRoot(process.env.MONGO_URI),
   ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(helmet(), LoggerMiddleware).forRoutes('cats');
+    consumer.apply(helmet(), LoggerMiddleware).forRoutes('none');
   }
 }
