@@ -8,6 +8,9 @@ import helmet from 'helmet';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { DebatesModule } from './debates/debates.module';
+import { ClaimsModule } from './claims/claims.module';
+import { ArticlesModule } from './articles/articles.module';
 
 @Module({
   imports: [
@@ -17,7 +20,10 @@ import { AuthModule } from './auth/auth.module';
     }),
     CoreModule,
     AuthModule,
+    ArticlesModule,
+    ClaimsModule,
     CountriesModule,
+    DebatesModule,
     LanguagesModule,
     MongooseModule.forRoot(process.env.MONGO_URI),
   ],
