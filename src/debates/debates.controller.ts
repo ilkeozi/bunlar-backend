@@ -35,8 +35,8 @@ export class DebatesController {
 
   @Get()
   @Get()
-  @UseGuards(AuthGuard('jwt'))
-  @ApiBearerAuth('jwt')
+  /*  @UseGuards(AuthGuard('jwt'))
+  @ApiBearerAuth('jwt') */
   @DocumentFindAll('debates')
   findAll() {
     return this.debatesService.findAll();
