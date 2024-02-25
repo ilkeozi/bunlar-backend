@@ -45,18 +45,18 @@ export class DebatesController {
   @Get(':id')
   @DocumentFindOne('debate')
   findOne(@Param('id') id: string) {
-    return this.debatesService.findOne(+id);
+    return this.debatesService.findOne(id);
   }
 
   @Patch(':id')
   @DocumentUpdate('debate')
   update(@Param('id') id: string, @Body() updateDebateDto: UpdateDebateDto) {
-    return this.debatesService.update(+id, updateDebateDto);
+    return this.debatesService.update(id, updateDebateDto);
   }
 
   @Delete(':id')
   @DocumentDelete('debate')
   remove(@Param('id') id: string) {
-    return this.debatesService.remove(+id);
+    return this.debatesService.remove(id);
   }
 }

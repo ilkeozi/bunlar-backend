@@ -35,7 +35,7 @@ export class DebatesService {
     return items;
   }
 
-  async findOne(id: number): Promise<Debate> {
+  async findOne(id: string): Promise<Debate> {
     const item = await this.debateModel.findOne({ _id: id }).exec();
 
     if (!item) {
