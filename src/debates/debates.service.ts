@@ -1,26 +1,67 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateDebateDto } from './dto/create-debate.dto';
 import { UpdateDebateDto } from './dto/update-debate.dto';
+import { Debate } from './schemas/debate.schema';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { EventEmitter2 } from '@nestjs/event-emitter';
+import { DebateCreatedEvent } from './events/debate-created.event';
+import { DebateUpdatedEvent } from './events/debate-updated.event';
+import { DebateDeletedEvent } from './events/debate-deleted.event';
 
 @Injectable()
 export class DebatesService {
-  create(createDebateDto: CreateDebateDto) {
-    return 'This action adds a new debate';
+  constructor(
+    @InjectModel(Debate.name) private readonly debateModel: Model<Debate>,
+    private eventEmitter: EventEmitter2,
+  ) {}
+
+  async create(createDebateDto: CreateDebateDto): Promise<Debate> {
+    const createdItem = await this.debateModel.create(createDebateDto);
+
+    const debateCreatedEvent = new DebateCreatedEvent();
+    debateCreatedEvent.name = createdItem.name;
+    this.eventEmitter.emit('debate.created', debateCreatedEvent);
+
+    return createdItem;
   }
 
-  findAll() {
-    return `This action returns all debates`;
+  async findAll(): Promise<Debate[]> {
+    const items = await this.debateModel.find().exec();
+
+    if (!items) {
+      throw new NotFoundException(`Countries not found`);
+    }
+    return items;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} debate`;
+  async findOne(id: number): Promise<Debate> {
+    const item = await this.debateModel.findOne({ _id: id }).exec();
+
+    if (!item) {
+      throw new NotFoundException(`Country ${id} not found`);
+    }
+    return item;
   }
 
-  update(id: number, updateDebateDto: UpdateDebateDto) {
-    return `This action updates a #${id} debate`;
+  async update(id: number, updateDebateDto: UpdateDebateDto): Promise<Debate> {
+    const updatedItem = await this.debateModel.findByIdAndUpdate(
+      id,
+      updateDebateDto,
+    );
+
+    const debateUpdatedEvent = new DebateUpdatedEvent();
+    debateUpdatedEvent.name = updatedItem.name;
+    this.eventEmitter.emit('debate.updated', debateUpdatedEvent);
+    return updatedItem;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} debate`;
+  async remove(id: number): Promise<Debate> {
+    const deletedDebate = await this.debateModel.findByIdAndRemove(id).exec();
+    const debateDeletedEvent = new DebateDeletedEvent();
+    debateDeletedEvent.name = deletedDebate.name;
+    this.eventEmitter.emit('debate.deleted', debateDeletedEvent);
+
+    return deletedDebate;
   }
 }
