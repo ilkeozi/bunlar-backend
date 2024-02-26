@@ -44,7 +44,7 @@ export class DebatesService {
     return item;
   }
 
-  async update(id: number, updateDebateDto: UpdateDebateDto): Promise<Debate> {
+  async update(id: string, updateDebateDto: UpdateDebateDto): Promise<Debate> {
     const updatedItem = await this.debateModel.findByIdAndUpdate(
       id,
       updateDebateDto,
@@ -56,7 +56,7 @@ export class DebatesService {
     return updatedItem;
   }
 
-  async remove(id: number): Promise<Debate> {
+  async remove(id: string): Promise<Debate> {
     const deletedDebate = await this.debateModel.findByIdAndRemove(id).exec();
     const debateDeletedEvent = new DebateDeletedEvent();
     debateDeletedEvent.name = deletedDebate.name;
