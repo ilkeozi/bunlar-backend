@@ -1,7 +1,8 @@
-import { Prop } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateArticleDto {
+@Schema()
+export class Article {
   @Prop({ required: true })
   @ApiProperty({
     example: 'Cloning animals is ethical.',
@@ -29,3 +30,5 @@ export class CreateArticleDto {
   @Prop({ default: Date.now })
   updatedAt: Date;
 }
+
+export const ArticleSchema = SchemaFactory.createForClass(Article);

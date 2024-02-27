@@ -21,7 +21,7 @@ export class ClaimsService {
 
     const claimCreatedEvent = new ClaimCreatedEvent();
     claimCreatedEvent.thesis = createdItem.thesis;
-    this.eventEmitter.emit('debate.created', claimCreatedEvent);
+    this.eventEmitter.emit('claim.created', claimCreatedEvent);
 
     return createdItem;
   }
