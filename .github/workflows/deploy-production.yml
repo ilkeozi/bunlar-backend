@@ -1,0 +1,22 @@
+name: Deploy to Test
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      # Build
+      - run: npm install -g serverless
+      - run: serverless plugin install -n serverless-plugin-optimize
+      - run: serverless plugin install -n serverless-plugin-warmup
+      - run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: npm ci
+      - run: npm run build
+      # Deploy on AWS
+      - run: serverless deploy --stage production

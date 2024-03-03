@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { DebatesModule } from './debates/debates.module';
 import { ClaimsModule } from './claims/claims.module';
 import { ArticlesModule } from './articles/articles.module';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -26,6 +27,23 @@ import { ArticlesModule } from './articles/articles.module';
     DebatesModule,
     LanguagesModule,
     MongooseModule.forRoot(process.env.MONGO_URI),
+    ThrottlerModule.forRoot([
+      {
+        name: 'short',
+        ttl: 1000,
+        limit: 3,
+      },
+      {
+        name: 'medium',
+        ttl: 10000,
+        limit: 20,
+      },
+      {
+        name: 'long',
+        ttl: 60000,
+        limit: 100,
+      },
+    ]),
   ],
 })
 export class AppModule implements NestModule {
