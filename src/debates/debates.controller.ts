@@ -13,11 +13,11 @@ import { CreateDebateDto } from './dto/create-debate.dto';
 import { UpdateDebateDto } from './dto/update-debate.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { CacheInterceptor } from '@nestjs/cache-manager';
-import { DocumentFindAll } from 'src/common/decorators/document-findall.decorator';
-import { DocumentFindOne } from 'src/common/decorators/document-findone.decorator';
-import { DocumentUpdate } from 'src/common/decorators/document-update.decorator';
-import { DocumentDelete } from 'src/common/decorators/document-delete.decorator';
-import { DocumentCreate } from 'src/common/decorators/document-create.decorator';
+import { DocumentFindAll } from '../common/decorators/document-findall.decorator';
+import { DocumentFindOne } from '../common/decorators/document-findone.decorator';
+import { DocumentUpdate } from '../common/decorators/document-update.decorator';
+import { DocumentDelete } from '../common/decorators/document-delete.decorator';
+import { DocumentCreate } from '../common/decorators/document-create.decorator';
 
 @Controller('debates')
 @ApiTags('Debates')
