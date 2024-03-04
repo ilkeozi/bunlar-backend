@@ -26,12 +26,13 @@ async function bootstrap(): Promise<Handler> {
       },
       'jwt',
     )
+    .addServer('http://localhost:3000', 'Local')
+    .addServer('https://api-test.bunlar.org', 'Development')
+    .addServer('https://api.bunlar.org', 'Production')
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('/', app, document);
-  /* await app.listen(3000);
-  console.log(`Application is running on: ${await app.getUrl()}`); */
   await app.init();
 
   const expressApp = app.getHttpAdapter().getInstance();
