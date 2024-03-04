@@ -26,9 +26,6 @@ async function bootstrap(): Promise<Handler> {
       },
       'jwt',
     )
-    .addServer('http://localhost:3000', 'Local')
-    .addServer('https://api-test.bunlar.org', 'Development')
-    .addServer('https://api.bunlar.org', 'Production')
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
