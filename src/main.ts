@@ -29,7 +29,7 @@ async function bootstrap(): Promise<Handler> {
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('/', app, document);
   /* await app.listen(3000);
   console.log(`Application is running on: ${await app.getUrl()}`); */
   await app.init();
