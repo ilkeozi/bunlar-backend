@@ -6,6 +6,10 @@ on:
     types:
       - completed
 
+permissions:
+  contents: read
+  actions: write
+
 jobs:
   e2e-test:
     runs-on: ubuntu-latest
@@ -16,6 +20,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -26,7 +31,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-          path: ./dist # Adjust the path to where you want to extract the artifacts
+          path: ./dist
 
       - name: Install dependencies
         run: npm ci
