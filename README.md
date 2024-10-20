@@ -1,73 +1,126 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Bunlar Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![Build](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build.yml)
+[![Unit Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/unit-tests.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/unit-tests.yml)
+[![E2E Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml)
+[![Deploy to Test](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-test.yml/badge.svg?branch=develop)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-test.yml)
+[![Deploy to Production](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-production.yml/badge.svg??branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-production.yml)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+[](https://github.com/ilkeozi/bunlar-backend/issues)
 
-## Description
+This repository contains the **backend** for the **Bunlar** project, a platform for structured, constructive online debates. The backend is built using **NestJS** and deployed on **AWS Lambda** using the **Serverless Framework**.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
+
+Before you can run the project, ensure you have the following installed:
+
+- Node.js (version 16.x.x or higher)
+- [npm](https://www.npmjs.com/get-npm) (comes with Node.js)
+- [Serverless Framework](https://www.serverless.com/) (Globally installed):
+
+  `npm install -g serverless`
 
 ## Installation
 
-```bash
-$ npm install
-```
+1.  Clone the repository:
 
-## Running the app
+        `git clone https://github.com/ilkeozi/bunlar-backend.git`
+        `cd bunlar-backend`
 
-```bash
-# development
-$ npm run start
+2.  Install the dependencies:
 
-# watch mode
-$ npm run start:dev
+    `npm install`
 
-# production mode
-$ npm run start:prod
-```
+## Running the Project Locally
 
-## Test
+### 1. Compile the NestJS Project
 
-```bash
-# unit tests
-$ npm run test
+Before running the project, compile the TypeScript code into JavaScript:
 
-# e2e tests
-$ npm run test:e2e
+`npm run build`
 
-# test coverage
-$ npm run test:cov
-```
+### 2. Set Up Environment Variables
 
-## Support
+You’ll need to set up your environment variables by creating a `.env` file in the root directory. Example:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+`MONGO_URI=mongodb://localhost:27017/bunlar-dev
+JWT_SECRET=your-secret-key`
 
-## Stay in touch
+### 3. Run the Project with Serverless Offline
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+You can emulate the AWS Lambda environment locally using the **serverless-offline** plugin. To run the project locally:
+
+`npm run offline`
+
+The API will be available at `http://localhost:3000`.
+
+### 4. Running in Development Mode with Hot-Reloading
+
+Alternatively, you can run the NestJS server in development mode with hot-reloading:
+
+`npm run start:dev`
+
+This will run the backend without the AWS Lambda simulation but with hot-reloading enabled for rapid development.
+
+## Scripts
+
+Here are some of the key scripts available in the project:
+
+- **Build**: Compile the project:
+
+  `npm run build`
+
+- **Start Development**: Run the NestJS project in development mode:
+
+  `npm run start:dev`
+
+- **Run Offline**: Simulate the Lambda environment locally:
+
+  `npm run offline`
+
+- **Lint**: Run the linter:
+
+  `npm run lint`
+
+- **Test**: Run unit tests:
+  `npm run test`
+
+## Testing
+
+The project uses **Jest** for testing. To run the tests:
+
+`npm run test`
+
+For watching tests during development:
+
+`npm run test:watch`
+
+## Deployment
+
+This project uses the **Serverless Framework** to deploy to AWS Lambda. To deploy the project, run:
+
+`sls deploy`
+
+Make sure you have AWS credentials configured in your environment.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute, please follow these steps:
+
+1.  **Fork the repository**.
+2.  **Create a new branch** (`git checkout -b feature/your-feature`).
+3.  **Commit your changes** (`git commit -m 'Add some feature'`).
+4.  **Push to the branch** (`git push origin feature/your-feature`).
+5.  **Open a Pull Request**.
+
+Please ensure that your code follows the existing style and includes tests. We also ask that all contributions adhere to the Code of Conduct.
+
+### Code of Conduct
+
+To create a welcoming environment for all contributors, we encourage all participants to read and adhere to our Code of Conduct.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the **GNU General Public License v3.0**. You can freely use, modify, and distribute this software under the terms of this license.
+
+For more details, see the LICENSE file.
