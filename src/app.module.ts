@@ -12,6 +12,7 @@ import { DebatesModule } from './debates/debates.module';
 import { ClaimsModule } from './claims/claims.module';
 import { ArticlesModule } from './articles/articles.module';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
         limit: 100,
       },
     ]),
+    TagsModule,
   ],
 })
 export class AppModule implements NestModule {
