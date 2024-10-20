@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 18
       # Build
-      - run: npm install -g serverless
+      - run: npm install -g serverless@3.34.0
       - run: serverless plugin install -n serverless-plugin-optimize
       - run: serverless plugin install -n serverless-plugin-warmup
       - run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
