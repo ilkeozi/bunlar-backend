@@ -2,7 +2,7 @@
 
 [![Build](https://img.shields.io/github/actions/workflow/status/ilkeozi/bunlar-backend/build-test.yml?branch=main&event=push&label=Build)](https://github.com/ilkeozi/bunlar-backend/actions)
 [![Unit Tests](https://img.shields.io/github/actions/workflow/status/ilkeozi/bunlar-backend/build-test.yml?branch=main&event=push&label=Unit%20Tests)](https://github.com/ilkeozi/bunlar-backend/actions)
-[![E2E Tests](https://img.shields.io/github/actions/workflow/status/ilkeozi/bunlar-backend/build-test.yml?branch=main&event=push&label=E2E%20Tests)](https://github.com/ilkeozi/bunlar-backend/actions)
+[![E2E Tests](https://img.shields.io/github/actions/workflow/status/ilkeozi/bunlar-backend/e2e-tests.yml?branch=main&label=E2E%20Tests)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml)
 
 [](https://github.com/ilkeozi/bunlar-backend/issues)
 
