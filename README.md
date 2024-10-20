@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build.yml)
 [![Unit Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/unit-tests.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/unit-tests.yml)
-[![E2E Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml/badge.?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml)
+[![E2E Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml)
 [![Deploy to Test](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-test.yml/badge.svg?branch=develop)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-test.yml)
 [![Deploy to Production](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-production.yml/badge.svg??branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-production.yml)
 
