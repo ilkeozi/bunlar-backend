@@ -1,6 +1,8 @@
 # Bunlar Backend
 
-![Build](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build-test.yml/badge.svg)
+[![Build](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build-test.yml/badge.svg?event=push&job=build)](https://github.com/ilkeozi/bunlar-backend/actions?query=workflow%3ABuild+Test)
+[![Unit Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build-test.yml/badge.svg?event=push&job=unit-test)](https://github.com/ilkeozi/bunlar-backend/actions?query=workflow%3ABuild+Test)
+[![E2E Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build-test.yml/badge.svg?event=push&job=e2e-test)](https://github.com/ilkeozi/bunlar-backend/actions?query=workflow%3ABuild+Test)
 
 [](https://github.com/ilkeozi/bunlar-backend/issues)
 
