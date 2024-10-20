@@ -1,4 +1,4 @@
-name: Build and E2E Tests
+name: E2E Tests
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - '**'
 
 jobs:
-  build:
+  e2e-test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,38 +30,6 @@ jobs:
 
       - name: Build the project
         run: npm run build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: ./dist
-
-  e2e-test:
-    needs: build # Ensures that e2e-test runs after build
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-artifacts
-          path: ./dist
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Run end-to-end tests
         run: npm run test:e2e
