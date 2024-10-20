@@ -1,14 +1,12 @@
 name: E2E Tests
 
 on:
-  workflow_run:
-    workflows: ['Build']
-    types:
-      - completed
-
-permissions:
-  contents: read
-  actions: write
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   e2e-test:
