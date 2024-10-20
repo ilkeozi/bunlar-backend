@@ -12,6 +12,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "offline": "sls offline start",
     "lint": "eslint \"{src,apps,libs,test,e2e}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
