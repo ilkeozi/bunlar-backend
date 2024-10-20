@@ -1,5 +1,7 @@
 # Bunlar Backend
 
+![Build](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build-test.yml/badge.svg)
+
 [](https://github.com/ilkeozi/bunlar-backend/issues)
 
 This repository contains the **backend** for the **Bunlar** project, a platform for structured, constructive online debates. The backend is built using **NestJS** and deployed on **AWS Lambda** using the **Serverless Framework**.
@@ -18,8 +20,8 @@ Before you can run the project, ensure you have the following installed:
 
 1.  Clone the repository:
 
-    `git clone https://github.com/yourusername/bunlar-backend.git
-cd bunlar-backend`
+        `git clone https://github.com/ilkeozi/bunlar-backend.git`
+        `cd bunlar-backend`
 
 2.  Install the dependencies:
 
