@@ -1,8 +1,10 @@
 # Bunlar Backend
 
-[![Build](https://img.shields.io/github/actions/workflow/status/ilkeozi/bunlar-backend/build-test.yml?branch=main&event=push&label=Build)](https://github.com/ilkeozi/bunlar-backend/actions)
-[![Unit Tests](https://img.shields.io/github/actions/workflow/status/ilkeozi/bunlar-backend/build-test.yml?branch=main&event=push&label=Unit%20Tests)](https://github.com/ilkeozi/bunlar-backend/actions)
-[![E2E Tests](https://img.shields.io/github/actions/workflow/status/ilkeozi/bunlar-backend/e2e-tests.yml?branch=main&label=E2E%20Tests)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml)
+[![Build](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/build.yml)
+[![Unit Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/unit-tests.yml/badge.svg?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/unit-tests.yml)
+[![E2E Tests](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml/badge.?branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/e2e-tests.yml)
+[![Deploy to Test](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-test.yml/badge.svg?branch=develop)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-test.yml)
+[![Deploy to Production](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-production.yml/badge.svg??branch=main)](https://github.com/ilkeozi/bunlar-backend/actions/workflows/deploy-production.yml)
 
 [](https://github.com/ilkeozi/bunlar-backend/issues)
 
