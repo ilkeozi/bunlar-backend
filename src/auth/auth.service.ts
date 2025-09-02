@@ -8,7 +8,7 @@ import {
 } from 'amazon-cognito-identity-js';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
-import { ConfirmRegistrationDto } from './dto/confirm-registraton.dto';
+import { ConfirmRegistrationDto } from './dto/confirm-registration.dto';
 import { UserLoginEvent } from './events/user-login.event';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { LoginResponse } from './schemas/login-response.schema';

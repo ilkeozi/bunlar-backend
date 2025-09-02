@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { ConfirmRegistrationDto } from './dto/confirm-registraton.dto';
+import { ConfirmRegistrationDto } from './dto/confirm-registration.dto';
 
 @Controller('auth')
 @ApiTags('Auth')
